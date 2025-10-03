@@ -1,15 +1,8 @@
 # 🚑 RapAid: Rapid Response & Aid Coordination
 
-\<p align="center"\>
-\<img src="[https://img.shields.io/badge/license-MIT-green.svg](https://www.google.com/search?q=https://img.shields.io/badge/license-MIT-green.svg)" alt="License"\>
-\<img src="[https://img.shields.io/badge/status-in%20development-yellow.svg](https://www.google.com/search?q=https://img.shields.io/badge/status-in%2520development-yellow.svg)" alt="Project Status"\>
-\<img src="[https://img.shields.io/github/stars/your-username/rapaid?style=social](https://www.google.com/search?q=https://img.shields.io/github/stars/your-username/rapaid%3Fstyle%3Dsocial)" alt="GitHub Stars"\>
-\<img src="[https://img.shields.io/github/forks/your-username/rapaid?style=social](https://www.google.com/search?q=https://img.shields.io/github/forks/your-username/rapaid%3Fstyle%3Dsocial)" alt="GitHub Forks"\>
-\</p\>
 
-A rapid response and aid coordination platform designed to connect communities in real-time. **RapAid** provides timely alerts, facilitates resource discovery, and builds a network of volunteers to ensure rapid assistance during local emergencies and adverse weather events.
 
-**[ 🚀 View Live Demo ](https://your-live-demo-link.com) • [ 🐛 Report a Bug ](https://www.google.com/search?q=https://github.com/your-username/rapaid/issues) • [ ✨ Request a Feature ](https://www.google.com/search?q=https://github.com/your-username/rapaid/issues)**
+**[ 🚀 View Live Demo ](https://disaster-relief-hub.vercel.app/)**
 
 -----
 
