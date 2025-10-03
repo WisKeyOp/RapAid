@@ -65,12 +65,6 @@ A centralized platform designed to assist in disaster management by connecting a
 
 ---
 
-## 📸 Screenshots
-
-> *(Include screenshots like Login, Dashboard, Help Request, NGO Tracking Map, Resource Panel, etc.)*
-
----
-
 ## 🧑‍💻 Installation & Setup
 
 ```bash
