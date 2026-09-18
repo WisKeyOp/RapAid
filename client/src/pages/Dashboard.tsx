@@ -6,6 +6,7 @@ import EmergencyMap from "@/components/EmergencyMap";
 import ActiveVolunteers from "@/components/ActiveVolunteers";
 import SafeZoneMap from "@/components/SafeZoneMap";
 import TaskManagement from "@/components/TaskManagement";
+import AgentDispatchPanel from "@/components/AgentDispatchPanel";
 import ResourceInventory from "@/components/ResourceInventory";
 import WeatherAlerts from "@/components/WeatherAlerts";
 import EvacuationRoutes from "@/components/EvacuationRoutes";
@@ -78,6 +79,7 @@ const Dashboard = () => {
         </TabsContent>
         
         <TabsContent value="task-management" className="space-y-4">
+          <AgentDispatchPanel />
           <TaskManagement />
         </TabsContent>
         

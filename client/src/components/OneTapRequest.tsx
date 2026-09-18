@@ -2,15 +2,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { Ambulance, MapPin, Apple, Pill } from "lucide-react";
+import { storeOfflineRequest, type EmergencyRequest } from "@/utils/offlineStorage";
+import { buildCompositeId, toPlainCoordinates } from "@/agent/allocationAgent";
 
 type EmergencyType = "rescue" | "food" | "medical";
-
-interface EmergencyRequest {
-  type: EmergencyType;
-  location: GeolocationCoordinates | null;
-  timestamp: Date;
-  deviceId: string; // This would be a browser fingerprint or device ID in a real app
-}
 
 const OneTapRequest = () => {
   const [isProcessing, setIsProcessing] = useState<EmergencyType | null>(null);
@@ -35,16 +30,18 @@ const OneTapRequest = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // Create request object
+          // Create request object. Coordinates are copied to a plain object
+          // (GeolocationCoordinates does not survive JSON.stringify) and the
+          // composite client key is fixed now so every retry/replay reuses it.
+          const timestamp = new Date();
+          const deviceId = getDeviceId();
           const request: EmergencyRequest = {
             type,
-            location: position.coords,
-            timestamp: new Date(),
-            deviceId: getDeviceId()
+            location: toPlainCoordinates(position.coords),
+            timestamp,
+            deviceId,
+            clientKey: buildCompositeId(deviceId, timestamp),
           };
-          
-          // In a real app, we'd send this to a server or store offline
-          console.log("Emergency request created:", request);
           
           if (isOnline) {
             // Simulate sending to server
@@ -57,10 +54,8 @@ const OneTapRequest = () => {
               });
             }, 1500);
           } else {
-            // Store for offline sync
-            const offlineRequests = JSON.parse(localStorage.getItem("offline-emergency-requests") || "[]");
-            offlineRequests.push(request);
-            localStorage.setItem("offline-emergency-requests", JSON.stringify(offlineRequests));
+            // Store for offline sync (idempotent on clientKey)
+            storeOfflineRequest(request);
             
             setIsProcessing(null);
             toast({
